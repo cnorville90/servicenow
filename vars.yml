@@ -1,0 +1,22 @@
+---
+- name: variable playbook test
+  hosts: localhost
+
+  vars:
+    var_one: awesome
+    var_two: ansible is
+    var_three: "{{ var_two }} {{ var_one }}"
+    my_mood: happy
+ 
+  tasks:
+    - name: conditional task, based on my_mood var
+      debug:
+        msg: "Come talk to me. I am {{ my_mood }}!"
+      when: my_mood == "happy"
+      debug:
+        msg: "Feel free to interact. I am {{ my_mood }}"
+      when: my_mood != "grumpy"
+
+    - name: print out var_three
+      debug:
+        msg: "{{var_three}}"

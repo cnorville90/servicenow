@@ -1,0 +1,22 @@
+---
+- name: View a SNOW change request
+  hosts: localhost
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: include vars
+    include_vars: change_request_vars.yml
+
+  - name: View a SNOW record
+    snow_record:
+      state: present
+      table: change_request
+      username: "{{ sn_username }}"
+      password: "{{ sn_password }}"
+      instance: "{{ sn_instance }}"
+      number: CHG0030002
+    register: incident
+
+  - debug: 
+      var: incident.record

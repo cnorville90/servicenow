@@ -1,0 +1,23 @@
+---
+- name: Attach a file to a change request
+  hosts: localhost
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: include vars
+    include_vars: change_request_vars.yml
+
+  - name: Attach a file to a SNOW record
+    snow_record:
+      username: "{{ sn_username }}"
+      password: "{{ sn_password }}"
+      instance: "{{ sn_instance }}"
+      state: present
+      table: change_request
+      number: CHG0030001
+      attachment: rickjames.txt
+    register: incident
+
+  - debug: 
+      var: incident.record.state

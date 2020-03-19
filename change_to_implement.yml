@@ -1,0 +1,27 @@
+---
+- name: Change the status of a Change Request to "Implement" -1
+  hosts: localhost
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: include vars
+    include_vars: change_request_vars.yml
+
+  - name: Update an incident
+    snow_record:
+      username: "{{ sn_username }}"
+      password: "{{ sn_password }}"
+      instance: "{{ sn_instance }}"
+      state: present
+      table: change_request
+      number: CHG0030002
+      data:
+        state : -1
+        work_notes: "Implementing the change"
+    register: incident
+
+  - name: dump out the registered variable
+    debug:
+      var: incident.record.state
+      
