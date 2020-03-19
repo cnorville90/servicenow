@@ -1,5 +1,5 @@
 ---
-- name: Change the status of a Change Request
+- name: Change the status of a Change Request to Assess
   hosts: localhost
   gather_facts: no
   connection: local
