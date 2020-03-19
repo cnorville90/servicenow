@@ -15,7 +15,7 @@
       instance: "{{ sn_instance }}"
       state: present
       table: change_request
-      number: CHG0030002
+      number: "{{ sn_record_number }}"
       data:
         state : -2
         work_notes: "Scheduling the Change"
