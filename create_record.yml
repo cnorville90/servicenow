@@ -18,7 +18,7 @@
       data:
         severity: "{{ sn_severity }}"
         priority: "{{ sn_priority }}"
-        short_description: "This is yet a test opened by Ansiblei Tower"
+        short_description: "This is a test incident opened by Ansible Tower! Yay!"
     register: new_incident
 
   - debug: 
