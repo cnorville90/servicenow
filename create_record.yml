@@ -18,7 +18,7 @@
       data:
         severity: "{{ sn_severity }}"
         priority: "{{ sn_priority }}"
-        short_description: "It's All Daryls fault!"
+        short_description: "Arrow Demo!"
     register: new_incident
 
   - debug: 
