@@ -11,7 +11,7 @@
     include_vars: change_request_vars.yml
 
   - name: Create a ServiceNow incident
-    snow_record:
+    d:
       state: present
       table: change_request
       username: "{{ sn_username }}"
@@ -20,7 +20,7 @@
       data:
         severity: "{{ sn_severity }}"
         priority: "{{ sn_priority }}"
-        short_description: "CDW Demo! - Awesome!"
+        short_description: "CDW Demo!"
     register: new_incident
 
   - debug: 
