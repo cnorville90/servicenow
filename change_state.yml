@@ -23,4 +23,5 @@
       type: standard
       state: "{{ sn_state }}" 
       assignment_group: "{{ sn_assignment_group }}"
+      number: "{{ sn_number }}"
     register: changed_state
