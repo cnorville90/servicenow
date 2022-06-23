@@ -4,6 +4,9 @@
 sn_username: admin
 sn_password: "oAzjF!W0K=7p"
 sn_instance: dev105685
+
+short_description: "Kyndryl Demo"
+long_description: "This is a demo Change Request for Kyndryl"
  
 #data variables
  

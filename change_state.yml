@@ -1,27 +1,26 @@
 ---
-- name: Change the status of a Change Request to "Authorize" -3
+- name: Create ticket with notes
   hosts: localhost
   gather_facts: no
   connection: local
+  collections:
+    - servicenow.itsm
+  vars_files:
+    - snow_vars.yml
+
+
+  # Hey Ya!
 
   tasks:
-  - name: include vars
-    include_vars: change_request_vars.yml
 
-  - name: Update an incident
-    snow_record:
-      username: "{{ sn_username }}"
-      password: "{{ sn_password }}"
-      instance: "{{ sn_instance }}"
-      state: present
-      table: change_request
-      number: CHG0030002
-      data:
-        state : -3
-        work_notes: "Authorizing Record"
-    register: incident
-
-  - name: dump out the registered variable
-    debug:
-      var: incident.record.state
-      
+  - name: Create a ServiceNow Change Request
+    servicenow.itsm.change_request:
+      instance: 
+        username: "{{ sn_username }}"
+        password: "{{ sn_password }}"
+        host: "https://{{ sn_instance }}.service-now.com"
+      priority: moderate
+      type: standard
+      state: "{{ sn_state }}" 
+      assignment_group: "{{ sn_assignment_group }}"
+    register: changed_state
