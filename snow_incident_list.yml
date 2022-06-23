@@ -1,0 +1,22 @@
+---
+- name: SNOW - List incidents
+  hosts: localhost
+  connection: local
+  collections:
+    - servicenow.itsm
+  vars_files:
+    - snow_vars.yml
+
+  tasks:
+
+    - name: List incidents
+      servicenow.itsm.incident_info:
+        instance: 
+          host: "https://{{ sn_instance }}.service-now.com"
+          username: "{{ sn_username }}"
+          password: "{{ sn_password }}"
+      register: incidents
+
+    - debug:
+        var: incidents
+

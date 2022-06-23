@@ -3,25 +3,30 @@
   hosts: localhost
   gather_facts: no
   connection: local
+  collections:
+    - servicenow.itsm
+  vars_files:
+    - snow_vars.yml
+
 
   # Hey Ya!
 
   tasks:
-  - name: include vars
-    include_vars: change_request_vars.yml
 
-  - name: Create a ServiceNow incident
-    snow_record:
-      state: present
-      table: change_request
-      username: "{{ sn_username }}"
-      password: "{{ sn_password }}"
-      instance: "{{ sn_instance }}"
-      data:
-        severity: "{{ sn_severity }}"
-        priority: "{{ sn_priority }}"
-        short_description: "CDW Demo! - Awesome!"
-    register: new_incident
+  - name: Create a ServiceNow Change Request
+    servicenow.itsm.change_request:
+      instance: 
+        username: "{{ sn_username }}"
+        password: "{{ sn_password }}"
+        host: "https://{{ sn_instance }}.service-now.com"
+      priority: moderate
+      type: standard
+      state: new
+      short_description: "{{ short_description }}"
+      description: "{{ long_description }}"
+      other: 
+        expected_start: 2022-06-30
+    register: new_change
 
   - debug: 
-      var: new_incident.record
+      var: new_change.record
