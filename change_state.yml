@@ -19,6 +19,6 @@
         username: "{{ sn_username }}"
         password: "{{ sn_password }}"
         host: "https://{{ sn_instance }}.service-now.com"
-      state: "{{ sn_state }}" 
-      assignment_group: "{{ sn_assignment_group }}"
-      number: "{{ sn_number }}"
+      state: -4
+      assignment_group: "Help Desk"
+      number: CHG0030004
