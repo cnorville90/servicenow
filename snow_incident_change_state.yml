@@ -1,0 +1,21 @@
+---
+- name: SNOW - Create an incident
+  hosts: localhost
+  connection: local
+  collections:
+    - servicenow.itsm
+  vars_files:
+    - snow_vars.yml
+
+  tasks:
+
+    - name: Create incident
+      incident:
+        instance: 
+          host: "https://{{ sn_instance }}.service-now.com"
+          username: "{{ sn_username }}"
+          password: "{{ sn_password }}"
+
+        state: "{{ state }}"
+        number: "{{ incident_number }}"
+
