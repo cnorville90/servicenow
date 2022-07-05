@@ -5,7 +5,7 @@
   collections:
     - servicenow.itsm
   vars_files:
-    - snow_vars.yml
+    - encrypted_snow_vars.yml
 
   tasks:
 

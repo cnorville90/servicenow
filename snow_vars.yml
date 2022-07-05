@@ -5,10 +5,12 @@ sn_username: admin
 sn_password: "oAzjF!W0K=7p"
 sn_instance: dev105685
 
-short_description: "Kyndryl Demo"
+short_description: "Kyndryl Demo for my team"
 long_description: "This is a demo Change Request for Kyndryl"
  
 #data variables
  
 sn_severity: 2
 sn_priority: 2
+state: in_progress
+incident_number: INC0010002
