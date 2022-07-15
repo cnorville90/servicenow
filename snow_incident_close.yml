@@ -1,0 +1,23 @@
+---
+- name: SNOW - Close an incident
+  hosts: localhost
+  connection: local
+  collections:
+    - servicenow.itsm
+  vars_files:
+    - encrypted_snow_vars.yml
+
+  tasks:
+
+    - name: Close incident
+      incident:
+        instance: 
+          host: "https://{{ sn_instance }}.service-now.com"
+          username: "{{ sn_username }}"
+          password: "{{ sn_password }}"
+
+        state: "{{ update_state }}"
+        caller: "{{ sn_username }}"
+        number: "{{ incident_number }}"
+        close_code: "Solved (Work Around)"
+        close_notes: "{{ close_notes }}"
