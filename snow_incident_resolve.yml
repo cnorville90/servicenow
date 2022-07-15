@@ -9,7 +9,7 @@
 
   tasks:
 
-    - name: update incident
+    - name: Resolve incident
       incident:
         instance: 
           host: "https://{{ sn_instance }}.service-now.com"
@@ -19,5 +19,5 @@
         state: "{{ update_state }}"
         caller: "{{ sn_username }}"
         number: "{{ incident_number }}"
-        other:
-          work_notes: "We are looking at the problem!"
+        close_code: "Solved (Work Around)"
+        close_notes: "{{ close_notes }}"
