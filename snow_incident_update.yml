@@ -1,0 +1,22 @@
+---
+- name: SNOW - Update an incident
+  hosts: localhost
+  connection: local
+  collections:
+    - servicenow.itsm
+  vars_files:
+    - encrypted_snow_vars.yml
+
+  tasks:
+
+    - name: Create incident
+      incident:
+        instance: 
+          host: "https://{{ sn_instance }}.service-now.com"
+          username: "{{ sn_username }}"
+          password: "{{ sn_password }}"
+
+        state: "{{ update_state }}"
+        caller: "{{ sn_username }}"
+        number: "{{ incident_number }}"
+        work_notes: "We are looking at the problem!"

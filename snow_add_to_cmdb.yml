@@ -1,0 +1,27 @@
+---
+- name: add an item to the cmdb
+  hosts: localhost
+  connection: local 
+  gather_facts: no
+  vars_files:
+    - snow_vars.yml
+
+  tasks: 
+
+
+    - name: Put the new EC2 instance in the CMDB
+      servicenow.itsm.configuration_item:
+        state: present
+        name: "Test"
+        ip_address: 192.168.0.23
+        environment: production
+        sys_class_name: cmdb_ci_server
+        other:
+          classification: Production
+          fqdn: "ec2.example.com"
+          os: "Linux Red Hat"
+          host_name: "scooby"
+        instance: 
+          host: "https://{{ sn_instance }}.service-now.com"
+          username: "{{ sn_username }}"
+          password: "{{ sn_password }}"
