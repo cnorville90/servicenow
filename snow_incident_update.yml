@@ -19,4 +19,5 @@
         state: "{{ update_state }}"
         caller: "{{ sn_username }}"
         number: "{{ incident_number }}"
-        work_notes: "We are looking at the problem!"
+        other:
+          work_notes: "We are looking at the problem!"
