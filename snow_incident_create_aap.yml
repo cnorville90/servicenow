@@ -8,8 +8,8 @@
   tasks:
 
     - name: dump out the env
-      debug: 
-        var: "{{ env }}"
+      debug:
+        msg: "'{{ lookup('ansible.builtin.env', 'SN_HOST') }}' is the SN_HOST environment variable."
 
     # - name: Create incident
     #   incident:
