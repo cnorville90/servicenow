@@ -9,7 +9,7 @@
 
     - name: dump out the env
       debug: 
-        var: env
+        var: SN_HOST
 
     # - name: Create incident
     #   incident:
