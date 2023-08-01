@@ -3,7 +3,7 @@
   hosts: localhost
   connection: local
 
-  vars: 
+  vars:
     sn_username: "{{ lookup('ansible.builtin.env', 'SN_USERNAME') }}"
     sn_instance: "{{ lookup('ansible.builtin.env', 'SN_HOST') }}"
 
@@ -29,3 +29,4 @@
 
     # - ansible.builtin.debug:
     #     msg: "A new incident has been created: {{ new_incident.record.number }}"
+    
