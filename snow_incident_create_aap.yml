@@ -4,7 +4,7 @@
   connection: local
 
   vars: 
-    sn_username: "{{ lookup('ansible.builtin.env', 'SN_USER') }}"
+    sn_username: "{{ lookup('ansible.builtin.env', 'SN_USERNAME') }}"
     sn_instance: "{{ lookup('ansible.builtin.env', 'SN_HOST') }}"
 
   tasks:
