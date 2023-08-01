@@ -9,14 +9,14 @@
 
     - name: Create incident
       incident:
-        instance:
-          host:     "{{ sn_instance }}"
-          username: "{{ sn_username }}"
-          password: "{{ sn_password }}"
+        # instance:
+        #   host:     "{{ sn_instance }}"
+        #   username: "{{ sn_username }}"
+        #   password: "{{ sn_password }}"
         state: new
-        caller: "{{ sn_username }}"
-        short_description: "User {{ sn_username }} created a new incident using Ansible"
-        description: "User {{ sn_username }} successfully created a new incident! Something is broken! Fix it!"
+        caller: "{{ username }}"
+        short_description: "User {{ username }} created a new incident using Ansible"
+        description: "User {{ username }} successfully created a new incident! Something is broken! Fix it!"
         impact: low
         urgency: low
       register: new_incident
