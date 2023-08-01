@@ -11,7 +11,7 @@
       incident:
         instance:
           host:     "{{ sn_instance }}"
-          username: "{{ sn_user }}"
+          username: "{{ sn_username }}"
           password: "{{ sn_password }}"
         state: new
         caller: "{{ username }}"
