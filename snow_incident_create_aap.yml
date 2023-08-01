@@ -11,7 +11,7 @@
 
     - name: Dump out the env
       ansible.builtin.debug:
-        msg: "'{{ sn_username }}' is our user."
+        msg: "{{ sn_username }} is our user."
 
     - name: Create incident
       servicenow.itsm.incident:
