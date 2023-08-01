@@ -1,11 +1,9 @@
 ---
-- name: SNOW - Create an incident
+- name: SNOW - Create an incident - AAP
   hosts: localhost
   connection: local
   collections:
     - servicenow.itsm
-  vars_files:
-    - encrypted_snow_vars.yml
 
   tasks:
 
