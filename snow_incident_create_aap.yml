@@ -9,7 +9,7 @@
 
     - name: dump out the env
       debug: 
-        var: instance
+        var: "{{ env }}"
 
     # - name: Create incident
     #   incident:
