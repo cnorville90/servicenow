@@ -9,6 +9,10 @@
 
     - name: Create incident
       incident:
+        instance:
+          host:     "{{ sn_instance }}"
+          username: "{{ sn_user }}"
+          password: "{{ sn_password }}"
         state: new
         caller: "{{ username }}"
         short_description: "User {{ username }} created a new incident using Ansible"
