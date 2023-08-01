@@ -1,33 +1,31 @@
 ---
-- name: SNOW - Create an incident - AAP
+- name: SNOW Create an incident - AAP
   hosts: localhost
   connection: local
-  collections:
-    - servicenow.itsm
+
+  vars: 
+    sn_username: "{{ lookup('ansible.builtin.env', 'SN_USER') }}"
+    sn_instance: "{{ lookup('ansible.builtin.env', 'SN_HOST') }}"
 
   tasks:
 
-    - name: dump out the env
-      debug:
-        msg: "'{{ lookup('ansible.builtin.env', 'SN_HOST') }}' is the SN_HOST environment variable."
+    - name: Dump out the env
+      ansible.builtin.debug:
+        msg: "'{{ sn_username }}' is our user."
 
-    # - name: Create incident
-    #   incident:
-    #     # instance:
-    #     #   host:     "{{ sn_instance }}"
-    #     #   username: "{{ sn_username }}"
-    #     #   password: "{{ sn_password }}"
-    #     state: new
-    #     caller: "Chris.Norville"
-    #     short_description: "User Scooter created a new incident using Ansible"
-    #     description: "User Scooter successfully created a new incident! Something is broken! Fix it!"
-    #     impact: low
-    #     urgency: low
-    #   register: new_incident
+    - name: Create incident
+      servicenow.itsm.incident:
+        state: new
+        caller: "Chris.Norville"
+        short_description: "User Scooter created a new incident using Ansible"
+        description: "User Scooter successfully created a new incident! Something is broken! Fix it!"
+        impact: low
+        urgency: low
+      register: new_incident
 
-    # - set_fact:
-    #     incident_number_cached: "{{ new_incident.record.number }}"
-    #     cacheable: true
+    - set_fact:
+        incident_number_cached: "{{ new_incident.record.number }}"
+        cacheable: true
 
-    # - debug:
-    #     msg: "A new incident has been created: {{ new_incident.record.number }}"
+    - ansible.builtin.debug:
+        msg: "A new incident has been created: {{ new_incident.record.number }}"
