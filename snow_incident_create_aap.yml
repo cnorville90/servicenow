@@ -2,16 +2,13 @@
 - name: SNOW Create an incident - AAP
   hosts: localhost
   connection: local
-
+  gather_facts: No
+  
   vars:
     sn_username: "{{ lookup('ansible.builtin.env', 'SN_USERNAME') }}"
     sn_instance: "{{ lookup('ansible.builtin.env', 'SN_HOST') }}"
 
   tasks:
-
-    # - name: Dump out the env
-    #   ansible.builtin.debug:
-    #     msg: "{{ sn_username }} is our user."
 
     - name: Create incident
       servicenow.itsm.incident:
