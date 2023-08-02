@@ -1,7 +1,6 @@
 ---
 - name: SNOW Create an incident - AAP
-  hosts: localhost
-  connection: local
+  hosts: zos
   gather_facts: No
   
   vars:
@@ -19,6 +18,7 @@
         impact: low
         urgency: low
       register: new_incident
+      delegate_to: localhost
 
     - set_fact:
         incident_number_cached: "{{ new_incident.record.number }}"
@@ -26,3 +26,19 @@
 
     - ansible.builtin.debug:
         msg: "A new incident has been created: {{ new_incident.record.number }}"
+
+    - name: Ping the mainframe to see if we can work with it, update the ticket
+      zos_ping: 
+      register: ping_result
+
+    - name: Display the ping result
+      debug: 
+        msg: "{{ ping_result.ping }}"
+
+    - name: Update the SNOW ticket before running the JCL
+      incident:
+        state: in_progress
+        caller: "{{ sn_username }}"
+        number: "{{ incident_number_cached }}"
+        other:
+          work_notes: "We are looking at the problem!"
