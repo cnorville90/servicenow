@@ -41,5 +41,6 @@
         caller: "{{ sn_username }}"
         number: "{{ incident_number_cached }}"
         other:
-          work_notes: "We are looking at the problem!"
+          work_notes: "System: {{ inventory_hostname }} is responding"
       delegate_to: localhost
+      when: ping_result.ping == "pong"
