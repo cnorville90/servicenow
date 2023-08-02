@@ -2,7 +2,13 @@
 - name: SNOW Create an incident - AAP
   hosts: all
   gather_facts: No
-  
+  environment:
+    ZOAU_ROOT: "{{zoau_home}}"
+    ZOAU_HOME: "{{zoau_home}}"
+    PATH: "{{zoau_home}}/bin:{{python_path}}/bin:/bin:."
+    LIBPATH: "{{zoau_home}}/lib:{{python_path}}/lib:/lib:/usr/lib:."
+    PYTHONPATH: "{{zoau_home}}/lib"
+    _BPXK_AUTOCVT: "ON"
   vars:
     sn_username: "{{ lookup('ansible.builtin.env', 'SN_USERNAME') }}"
     sn_instance: "{{ lookup('ansible.builtin.env', 'SN_HOST') }}"
