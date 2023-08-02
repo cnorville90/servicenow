@@ -44,3 +44,19 @@
           work_notes: "System: {{ inventory_hostname }} is responding"
       delegate_to: localhost
       when: ping_result.ping == "pong"
+
+    - name: Submit a JCL job
+      ibm.ibm_zos_core.zos_job_submit:
+        src: "Z32542.JCL(MERGSORT)"
+        location: DATA_SET
+        return_output: true
+        wait_time_s: 20
+      register: job_detail
+
+    - name: Setting fact `Job Results`
+      set_fact:
+        job_results: "{{ job_detail.jobs[0]}}"
+
+    - name: Results
+      debug:  
+        msg: "Job {{ job_results.job_id}} completed with {{ job_results.ret_code.msg}}"
