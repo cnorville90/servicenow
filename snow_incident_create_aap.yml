@@ -28,7 +28,7 @@
         msg: "A new incident has been created: {{ new_incident.record.number }}"
 
     - name: Ping the mainframe to see if we can work with it, update the ticket
-      zos_ping: 
+      ibm.ibm_zos_core.zos_ping: 
       register: ping_result
 
     - name: Display the ping result
@@ -36,9 +36,10 @@
         msg: "{{ ping_result.ping }}"
 
     - name: Update the SNOW ticket before running the JCL
-      incident:
+      servicenow.itsm.incident:
         state: in_progress
         caller: "{{ sn_username }}"
         number: "{{ incident_number_cached }}"
         other:
           work_notes: "We are looking at the problem!"
+      delegate_to: localhost
