@@ -1,6 +1,6 @@
 ---
 - name: SNOW Create an incident - AAP
-  hosts: zos
+  hosts: all
   gather_facts: No
   
   vars:
