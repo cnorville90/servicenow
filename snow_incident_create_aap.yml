@@ -66,3 +66,13 @@
     - name: Results
       debug:  
         msg: "Job {{ job_results.job_id}} completed with {{ job_results.ret_code.msg}}"
+
+    - name: Update the SNOW ticket with the JCL Job status
+      servicenow.itsm.incident:
+        state: in_progress
+        caller: "{{ sn_username }}"
+        number: "{{ incident_number_cached }}"
+        other:
+          work_notes: "Job {{ job_results.job_id}} completed with {{ job_results.ret_code.msg}}"
+      delegate_to: localhost
+      when: job_results.ret_code.msg == "CC 0000"
