@@ -11,7 +11,7 @@
 
     - name: update incident
       servicenow.itsm.incident:
-        state: in_progress
+        state: "{{ update_state }}"
         caller: "{{ sn_username }}"
         number: INC0010065
         other:
