@@ -1,0 +1,18 @@
+---
+- name: SNOW - Resolve an incident
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    sn_username: "{{ lookup('ansible.builtin.env', 'SN_USERNAME') }}"
+    sn_instance: "{{ lookup('ansible.builtin.env', 'SN_HOST') }}"
+
+  tasks:
+
+    - name: update incident
+      incident:
+        state: in_progress
+        caller: "{{ sn_username }}"
+        number: INC0010065
+        other:
+          work_notes: "We are looking at the problem!"
