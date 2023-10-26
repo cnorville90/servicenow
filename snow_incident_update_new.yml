@@ -10,7 +10,7 @@
   tasks:
 
     - name: update incident
-      incident:
+      servicenow.itsm.incident:
         state: in_progress
         caller: "{{ sn_username }}"
         number: INC0010065
