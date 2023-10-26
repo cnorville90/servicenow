@@ -11,8 +11,16 @@
 
     - name: update incident
       servicenow.itsm.incident:
-        state: "{{ update_state }}"
+        state: "{{ in_progress }}"
         caller: "{{ sn_username }}"
-        number: INC0010065
+        number: "{{ incident_number }}"
         other:
           work_notes: "We are looking at the problem!"
+
+    - name: resolve incident
+      servicenow.itsm.incident:
+        state: "{{ resolved }}"
+        caller: "{{ sn_username }}"
+        number: "{{ incident_number }}"
+        close_code: "Solved (Permanently)"
+        close_notes: "Closed"
