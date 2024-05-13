@@ -15,8 +15,8 @@
       servicenow.itsm.incident:
         state: new
         caller: "{{ sn_username }}"
-        short_description: "User {{ sn_username }} created a new SNOW incident using Ansible... Isn't that just too darn cool?? "
-        description: "User {{ sn_username }} successfully created a new incident with Ansible! Something is broken! Fix it!"
+        short_description: "Container Issues for Robot-Shop on OCP Cluster"
+        description: "The cart deployment in the robot-shop namespace on the OCP Cluster has been scaled to 0"
         impact: low
         urgency: low
       register: new_incident
