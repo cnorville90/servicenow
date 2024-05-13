@@ -16,7 +16,7 @@
         state: new
         caller: "{{ sn_username }}"
         short_description: "Pod Replica issues for application in the Norville OCP Cluster"
-        description: "The {{ ocp_deployment_name }} deployment in the (( ocp_namespace )) namespace on the OCP Cluster has been scaled to 0"
+        description: "The {{ ocp_deployment_name }} deployment in the {{ ocp_namespace }} namespace on the OCP Cluster has been scaled to 0"
         impact: low
         urgency: low
       register: new_incident
