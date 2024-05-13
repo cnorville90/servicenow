@@ -2,15 +2,13 @@
 - name: SNOW - Create an incident
   hosts: localhost
   connection: local
-  collections:
-    - servicenow.itsm
   vars_files:
-    - encrypted_snow_vars.yml
+    - snow_vars.yml
 
   tasks:
 
     - name: Create incident
-      incident:
+      servicenow.itsm.incident:
         instance: 
           host: "https://{{ sn_instance }}.service-now.com"
           username: "{{ sn_username }}"
@@ -18,8 +16,8 @@
 
         state: new
         caller: "{{ sn_username }}"
-        short_description: "User {{ sn_username }} created a new incident using Ansible for Kyndryl"
-        description: "User {{ sn_username }} successfully created a new incident! Something is broken! Fix it!"
+        short_description: "User {{ sn_username }} created a new incident using Ansible from Instana"
+        description: "User {{ sn_username }} successfully created a new incident! Instana has reported something is broken! Fix it!"
         impact: low
         urgency: low
       register: new_incident

@@ -22,10 +22,10 @@
       priority: moderate
       type: standard
       state: new
-      short_description: "{{ short_description }}"
-      description: "{{ long_description }}"
+      short_description: "Something is wrong!"
+      description: "We have had an alert from INstana, something needs to be fixed"
       other: 
-        expected_start: 2022-06-30
+        expected_start: 2024-05-05
     register: new_change
 
   - debug: 
