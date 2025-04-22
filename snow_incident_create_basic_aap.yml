@@ -15,8 +15,8 @@
       servicenow.itsm.incident:
         state: new
         caller: "{{ sn_username }}"
-        short_description: "Pod Replica issues for application in the Norville OCP Cluster"
-        description: "The {{ ocp_deployment_name }} deployment in the {{ ocp_namespace }} namespace on the OCP Cluster has been scaled to 0"
+        short_description: "Testing AAP to ServiceNow Basic Functionality"
+        description: "Testing the connections and basic functionality from AAP to ServiceNow, Opening a dummy Incident"
         impact: low
         urgency: low
       register: new_incident
